@@ -1,0 +1,21 @@
+$list-item-background: white;
+
+.react-typeahead {
+
+	input, .react-typeahead-list {
+		width: 250px;
+	}
+		
+	.react-typeahead-list {
+		margin: 0;
+		padding: 0;
+		position: absolute;
+	}
+
+	.react-typeahead-list-item {
+		background-color: $list-item-background;
+		border: 1px solid whitesmoke;
+		list-style-type: none;
+		padding: 6px;
+	}
+}
