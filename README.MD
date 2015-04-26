@@ -12,6 +12,10 @@ I will try to update and improve this component as I'm learning
 - Execute $ npm install
 - Execute $ gulp or $gulp build
 
+or 
+
+- npm install reactypeahead
+
 ### Suggestions
 Do you have suggestions on how to improve this component? Great!
 I am just starting with ReactJS so there is probably room for improvement.
