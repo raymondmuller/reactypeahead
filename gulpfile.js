@@ -29,7 +29,7 @@ gulp.task('compile', function () {
 
 gulp.task('compile:production', function () {
     return gulp.src([
-            'src/components/Typeahead.js',
+            'src/components/react-typeahead.js',
             'src/components/TypeaheadInput.js',
             'src/components/TypeaheadList.js',
             'src/components/TypeaheadListItem.js'
@@ -37,11 +37,7 @@ gulp.task('compile:production', function () {
         .pipe(compileReact({
             harmony: true
         }))
-        .pipe(concat('react-typeahead.js'))
         .pipe(gulp.dest('./dist'))
-        .pipe(uglify())
-        .pipe(rename('react-typeahead.min.js'))
-        .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('sass', function () {
@@ -121,11 +117,11 @@ function errorHandler (error) {
 }
 
 gulp.task('default', function () {
-    runSequence(['clean'], ['compile'], 'sass', 'copy', 'server', 'opn', 'watch');
+    runSequence(['clean'], ['compile'], ['sass'], ['copy'], 'server', 'opn', 'watch');
 });
 
 gulp.task('build',['default']);
 
 gulp.task('production', function () {
-    runSequence(['clean:production'], ['compile:production'],'sass:dist');
+    runSequence(['clean:production'], ['compile:production'],['sass:dist']);
 });

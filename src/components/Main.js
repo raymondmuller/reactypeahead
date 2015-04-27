@@ -1,5 +1,5 @@
 var React = require('react');
-var Typeahead = require('./Typeahead');
+var Typeahead = require('./react-typeahead');
 
 class Main extends React.Component {
 	onSelect(item) {
