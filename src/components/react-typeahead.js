@@ -6,10 +6,10 @@ var TypeaheadListItem = require('./TypeaheadListItem');
 class Typeahead extends React.Component {
 	constructor(props) {
 	    super(props);
-	    this.state = {initialItems: this.props.data
-       		,
-	       items: []
-			};
+	    this.state = {
+	    	initialItems: this.props.data,
+       	items: []
+				};
 		  }
   	onSelect(value) {
   		this.setState({
@@ -22,7 +22,6 @@ class Typeahead extends React.Component {
   		}
   	}
   	onBlur() {
-  		console.log("BLURRING")
   		this.setState({
   			items: []
   		})
@@ -34,9 +33,9 @@ class Typeahead extends React.Component {
 		this.setState({
 			inputValue: event.target.value
 		})
-		var updatedList = this.props.data
+		var updatedList;
 		if(event.target.value.length) {
-			updatedList = updatedList.filter(function(item){
+			updatedList = this.props.data.filter(function(item){
 				  return (
 				  	item[0].toLowerCase().search(
 						event.target.value[0].toLowerCase()) !== -1 && 
@@ -47,13 +46,12 @@ class Typeahead extends React.Component {
 		else {
 			updatedList = []
 		}
-		if(this.props.limit) {
-			if(updatedList.length > this.props.limit) updatedList.length =  this.props.limit
+		if(this.props.limit && updatedList.length > this.props.limit) {
+			updatedList = updatedList.slice(0, this.props.limit)
 		}
+		
 		this.setState({items: updatedList});
 	}
-
-
 	render(){
 		var onSelect = this.onSelect.bind(this)
 		var onBlur = this.onBlur.bind(this)

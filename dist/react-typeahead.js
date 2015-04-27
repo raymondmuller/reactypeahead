@@ -6,10 +6,10 @@ var TypeaheadListItem = require('./TypeaheadListItem');
 var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____Class0.hasOwnProperty(____Class0____Key)){Typeahead[____Class0____Key]=____Class0[____Class0____Key];}}var ____SuperProtoOf____Class0=____Class0===null?null:____Class0.prototype;Typeahead.prototype=Object.create(____SuperProtoOf____Class0);Typeahead.prototype.constructor=Typeahead;Typeahead.__superConstructor__=____Class0;
 	function Typeahead(props) {"use strict";
 	    ____Class0.call(this,props);
-	    this.state = {initialItems: this.props.data
-       		,
-	       items: []
-			};
+	    this.state = {
+	    	initialItems: this.props.data,
+       	items: []
+				};
 		  }
   	Object.defineProperty(Typeahead.prototype,"onSelect",{writable:true,configurable:true,value:function(value) {"use strict";
   		this.setState({
@@ -22,7 +22,6 @@ var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____C
   		}
   	}});
   	Object.defineProperty(Typeahead.prototype,"onBlur",{writable:true,configurable:true,value:function() {"use strict";
-  		console.log("BLURRING")
   		this.setState({
   			items: []
   		})
@@ -34,9 +33,9 @@ var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____C
 		this.setState({
 			inputValue: event.target.value
 		})
-		var updatedList = this.props.data
+		var updatedList;
 		if(event.target.value.length) {
-			updatedList = updatedList.filter(function(item){
+			updatedList = this.props.data.filter(function(item){
 				  return (
 				  	item[0].toLowerCase().search(
 						event.target.value[0].toLowerCase()) !== -1 && 
@@ -47,13 +46,12 @@ var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____C
 		else {
 			updatedList = []
 		}
-		if(this.props.limit) {
-			if(updatedList.length > this.props.limit) updatedList.length =  this.props.limit
+		if(this.props.limit && updatedList.length > this.props.limit) {
+			updatedList = updatedList.slice(0, this.props.limit)
 		}
+		
 		this.setState({items: updatedList});
 	}});
-
-
 	Object.defineProperty(Typeahead.prototype,"render",{writable:true,configurable:true,value:function(){"use strict";
 		var onSelect = this.onSelect.bind(this)
 		var onBlur = this.onBlur.bind(this)

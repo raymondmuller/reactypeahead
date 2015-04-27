@@ -10,22 +10,22 @@ class Main extends React.Component {
 	}
 	render() {
 		var data = [
-				"Apples",
+				"Abc",
 				"Apple",
 				"Apps",
-				"Aples",
-				"apes",
-				"Applessss",
-				"Applestes",
-				"Applesweg",
-		        "Broccoli",
-		        "Chicken",
-		        "Duck",
-		        "Eggs",
-		        "Fish",
-		        "Granola",
-	      	    "Hash Browns"
-		         ]
+				"Apes",
+				"Adore",
+				"Ara",
+				"Atari",
+				"Axe",
+        "Broccoli",
+        "Chicken",
+        "Duck",
+        "Eggs",
+        "Fish",
+        "Granola",
+  	    "Hash Browns"
+	         ]
 		return (
 			<div className="main">
 				<h2> React Typeahead Demo </h2>
